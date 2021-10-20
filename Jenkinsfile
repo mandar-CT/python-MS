@@ -1,6 +1,6 @@
 pipeline { 
     environment { 
-        registry = "mandarct/pipeline-demo" 
+        registry = "mandarct" 
         registryCredential = 'mandarct' 
         ImageVersion = 'v1' 
         Image='pipeline-demo'
@@ -23,12 +23,17 @@ pipeline {
       }       
         stage('Building our image') { 
             steps { 
-                sh "docker build -t $Image ."
+                sh "docker build -t $Image:$ImageVersion ."
+                }
+            } 
+        stage('Tagging our image') { 
+            steps { 
+                sh "docker tag $Image $registry/$Image:$ImageVersion"
                 }
             } 
         stage('Deploy our image') { 
             steps { 
-                sh "docker push $registry:$ImageVersion"
+                sh "docker push $registry/$Image:$ImageVersion"
                 } 
             }
     }

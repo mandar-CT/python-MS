@@ -12,13 +12,14 @@ pipeline {
     stages { 
         
         stage('Clone') {
-         // Clones the repository from the current branch name
+            steps{
           echo 'Cloning files from (branch: "' + branchName + '" )'
           echo 'Make the output directory'
           sh 'mkdir -p build'
           dir('build') {
                 git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
-            }     
+            } 
+        }
       }       
         stage('Cloning our Git') { 
             steps { 

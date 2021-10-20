@@ -17,7 +17,6 @@ pipeline {
                 sh "docker build -t $Image ."
                 }
             } 
-        }
         stage('Deploy our image') { 
             steps { 
                 sh "docker push $registry:$ImageVersion"

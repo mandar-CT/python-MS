@@ -3,7 +3,7 @@ pipeline {
         registry = "mandarct/pipeline-demo" 
         registryCredential = 'mandarct' 
         ImageVersion = 'v1' 
-        Image=pipeline-demo
+        Image='pipeline-demo'
     }
     agent any 
     stages { 

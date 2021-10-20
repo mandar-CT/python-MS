@@ -31,7 +31,7 @@ pipeline {
                 sh "docker tag $Image $registry/$Image:$ImageVersion"
                 }
             } 
-        stage('Deploy our image') { 
+        stage('Pushing our image') { 
             steps { 
                 sh "docker push $registry/$Image:$ImageVersion"
                 } 

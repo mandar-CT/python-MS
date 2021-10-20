@@ -23,5 +23,4 @@ pipeline {
                 sh "docker push $registry:$ImageVersion"
                 } 
             }
-        }     
 }

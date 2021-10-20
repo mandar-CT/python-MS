@@ -4,9 +4,22 @@ pipeline {
         registryCredential = 'mandarct' 
         ImageVersion = 'v1' 
         Image='pipeline-demo'
+        gitCredentials = "CREDENTIAL_ID"
+        repoUrl = "https://github.com/mandar-CT/python-MS.git"
+        branchName = 'feature'
     }
     agent any 
     stages { 
+        
+        stage('Clone') {
+         // Clones the repository from the current branch name
+          echo 'Cloning files from (branch: "' + branchName + '" )'
+          echo 'Make the output directory'
+          sh 'mkdir -p build'
+          dir('build') {
+                git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
+            }     
+      }       
         stage('Cloning our Git') { 
             steps { 
                 git url: 'https://github.com/mandar-CT/python-MS.git' 

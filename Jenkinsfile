@@ -9,7 +9,7 @@ pipeline {
     stages { 
         stage('Cloning our Git') { 
             steps { 
-                git 'https://github.com/mandar-CT/python-MS.git' 
+                git url: 'https://github.com/mandar-CT/python-MS.git' 
             }
         } 
         stage('Building our image') { 
